@@ -19,23 +19,19 @@ posts=[
     }
 ]
 def index(request):
-    return render(request,'index.html',{'posts':posts})
+    return render(request,'posts/index.html',{'posts':posts})
 
 def detail(request,id):
-    html=''
+    post_selected=None
     for post in posts:
         if post['id']==id:
-            html+=f'''<h3>{post['id']}-{post['title']}</h3>
-                 <p>{post['dis']}</p>
-                 <a href='/posts/index/'>Home</a>   '''
-            return HttpResponse(html)
-    else:
-        return HttpResponseNotFound('NO post found with this input')
+            post_selected=post
+            break
+    return render(request,'posts/detail.html',{'post_selected':post_selected})
 
-def youtube(request):
-    url=reverse("index")
-    print(url)
-    return HttpResponseRedirect(url)
+
+def base(request):
+    return render(request,'base.html')
 
 
 

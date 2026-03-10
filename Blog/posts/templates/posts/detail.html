@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Detail</title>
+</head>
+<body>
+    {%if post_selected%}
+        <h1>{{post_selected.id}}-{{post_selected.title}}</h1>
+         <p>{{post_selected.dis}}</p>
+    {%else%}
+        <h1>This post is not available</h1>
+    {%endif%}
+</body>
+</html>
