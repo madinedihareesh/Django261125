@@ -18,6 +18,7 @@ posts=[
         'dis':'It is used to provide actions for webpage'
     }
 ]
+
 def index(request):
     return render(request,'posts/index.html',{'posts':posts})
 
