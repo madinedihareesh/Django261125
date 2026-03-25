@@ -1,4 +1,16 @@
-<div>
-    <a href="{%url 'detail' post.id%}" class="text-decoration-none text-dark"><h3> {{post.id}}-{{post.title}}</h3></a>
-    <p><b>{{post.dis}}</b></p>
+<div class="card mb-3 shadow-sm">
+    <div class="card-body">
+        <a href="{% url 'detail' post.id %}" class="text-decoration-none text-dark">
+            <!-- Fixed: used style="height:200px; width:200px" and added overflow-hidden -->
+            <div style="height: 200px; width: 200px;" class="rounded-circle overflow-hidden mx-auto">
+                <!-- Fixed: h-100 and object-fit-cover to keep the image from stretching -->
+                <img src="{{ post.post_url }}" alt="{{ post.post_title }}" class="w-100 h-100 object-fit-cover">
+            </div>
+            <h5 class="card-title mt-3">{{ post.id }} - {{ post.post_title }}</h5>
+        </a>
+
+        <p class="card-text">
+            <b>{{ post.post_dis|truncatechars:25 }}</b>
+        </p>
+    </div>
 </div>

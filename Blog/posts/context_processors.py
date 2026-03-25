@@ -1,3 +1,7 @@
 def sample(request):
-    name='vinay'
-    return {'name':name}
+    catogiers=[
+        'programing',
+        'Food',
+        'Travel'
+    ]
+    return {'cato': catogiers}

@@ -3,13 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    {%block css%}{%endblock css%}
-    <title>{%block title%}{%endblock title%}</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    {% block css %}{% endblock css %}
+
+    <title>{% block title %}Ablog{% endblock title %}</title>
 </head>
+
 <body>
-    {%block body%}
-    {%endblock body%}
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+<!-- Navbar Start -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+
+    <!-- Logo -->
+    <a class="navbar-brand fw-bold" href="#">Ablog</a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarContent">
+
+      <!-- Left Side Menu -->
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+        <li class="nav-item">
+          <a class="nav-link active" href="#">Home</a>
+        </li>
+
+        <!-- Dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+            Categories
+          </a>
+
+          <ul class="dropdown-menu">
+            {%for item in cato%}
+              <li><a class="dropdown-item" href="#">{{item}}</a></li>
+            {%endfor%}
+
+          </ul>
+        </li>
+
+      </ul>
+
+      <!-- Search -->
+      <form class="d-flex me-3" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search">
+        <button class="btn btn-outline-light">Search</button>
+      </form>
+
+      <!-- Auth Buttons -->
+      <a href="#" class="btn btn-outline-light me-2">Login</a>
+      <a href="#" class="btn btn-warning">Signup</a>
+
+    </div>
+  </div>
+</nav>
+<!-- Navbar End -->
+
+
+<!-- Main Content -->
+<div class="container mt-4">
+
+    {% block body %}
+    {% endblock body %}
+
+</div>
+
+
+<!-- Pagination -->
+<div class="container my-4">
+    {% block pagination %}
+    {% endblock pagination %}
+</div>
+
+
+<!-- Footer -->
+<footer class="bg-dark text-light text-center py-3 mt-5">
+    <p class="mb-0">
+        &copy; {% now "Y" %} All rights belongs to AchieversIT
+    </p>
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>

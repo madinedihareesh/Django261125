@@ -25,3 +25,5 @@ urlpatterns = [
     path('posts/',include('posts.urls')),
 
 ]
+admin.site.site_header = "Blog Administration"
+admin.site.index_title = "Blog Administration"

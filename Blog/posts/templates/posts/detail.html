@@ -1,17 +1,41 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Detail</title>
-</head>
-<body>
-    <h1>{{name}}</h1>
-    {%if post_selected%}
-        <h1>{{post_selected.id}}-{{post_selected.title}}</h1>
-         <p>{{post_selected.dis}}</p>
-    {%else%}
-        <h1>This post is not available</h1>
-    {%endif%}
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block title %}Post Detail{% endblock title %}
+
+{% block body %}
+
+<div class="container mt-4 d-flex justify-content-center">
+
+    {% if post_selected %}
+
+    <div class="card shadow-lg" style="width: 40rem;">
+        <div class="card-body">
+
+            <h3 class="card-title">
+                {{ post_selected.id }} - {{ post_selected.title }}
+            </h3>
+
+            <hr>
+
+            <p class="card-text">
+                {{ post_selected.dis }}
+            </p>
+
+            <a href="{%url 'index'%}" class="btn btn-primary mt-3">
+                Back to Posts
+            </a>
+
+        </div>
+    </div>
+
+    {% else %}
+
+    <div class="alert alert-danger text-center">
+        <h4>This post is not available</h4>
+    </div>
+
+    {% endif %}
+
+</div>
+
+{% endblock body %}
