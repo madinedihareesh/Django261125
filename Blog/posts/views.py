@@ -22,9 +22,11 @@ from .models import Post
 # ]
 
 def index(request):
-    Posts = Post.objects.all()
-    # print(Posts)
-    return render(request,'posts/index.html',{'posts':Posts})
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect('/accounts/login/')
+    else:
+        Posts = Post.objects.all()
+        return render(request,'posts/index.html',{'posts':Posts})
 
 def detail(request,id):
     post_selected = Post.objects.get(id=id)

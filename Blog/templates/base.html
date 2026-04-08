@@ -56,8 +56,16 @@
       </form>
 
       <!-- Auth Buttons -->
-      <a href="#" class="btn btn-outline-light me-2">Login</a>
-      <a href="{%url 'register'%}" class="btn btn-warning">Signup</a>
+      {%if  user.is_authenticated %}
+        <h3 class="text-primary m-2">{{user}}</h3>
+        <form action="{%url 'logout' %}">
+        <button type="submit" class="btn btn-danger">Logout</button>
+        </form>
+
+      {%else%}
+        <a href="{%url 'login'%}" class="btn btn-outline-success me-2">Login</a>
+        <a href="{%url 'register'%}" class="btn btn-warning">Signup</a>
+      {%endif%}
 
     </div>
   </div>
