@@ -1,0 +1,10 @@
+{%extends 'base.html'%}
+{%block body%}
+<h1 class="text-center">Login</h1>
+<form action="" method="POST">
+    {%csrf_token%}
+{{form}}
+    <button type="submit" class="btn btn-primary">Login</button>
+
+</form>
+{%endblock body%}

@@ -1,0 +1,22 @@
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import AuthenticationForm,UsernameField
+
+from django.contrib.auth.models import User
+from django import forms
+class RegisterForm(UserCreationForm):
+    email = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'form-control','placeholder': 'Email'}))
+    first_name = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control','placeholder': 'First Name'}),required=True)
+    last_name = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control','placeholder': 'Last Name'}),required=True)
+    password1 = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control','placeholder': 'Password'}),required=True)
+    password2 = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control','placeholder': 'Confirm Password'}),label='Confirm Password')
+    class Meta:
+        model = User
+        fields = ['username','email','first_name','last_name']
+        widgets = {
+            'username': forms.TextInput(attrs={'class': 'form-control','placeholder': 'Username'}),
+
+        }
+
+class LoginForm(AuthenticationForm):
+    username=UsernameField(label='Username', widget=forms.TextInput(attrs={'class': 'form-control','placeholder': 'Username'}))
+    password=forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control','placeholder': 'Password'}),required=True)

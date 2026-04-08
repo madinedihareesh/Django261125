@@ -3,6 +3,7 @@ from django.http import HttpResponse,HttpResponseNotFound,HttpResponseRedirect
 from django.urls import reverse
 from .models import Post
 
+
 # Create your views here.
 # posts=[
 #     {
@@ -22,15 +23,11 @@ from .models import Post
 
 def index(request):
     Posts = Post.objects.all()
-    print(Posts)
+    # print(Posts)
     return render(request,'posts/index.html',{'posts':Posts})
 
 def detail(request,id):
-    post_selected=None
-    for post in posts:
-        if post['id']==id:
-            post_selected=post
-            break
+    post_selected = Post.objects.get(id=id)
     return render(request,'posts/detail.html',{'post_selected':post_selected})
 
 
